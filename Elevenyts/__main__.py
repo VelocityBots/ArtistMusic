@@ -98,6 +98,14 @@ async def main():
                 logger.error(f"Failed to load plugin {module}: {e}", exc_info=True)
         logger.info(f"🔌 Loaded {len(all_modules)} plugin modules.")
 
+        # Step 7.5: Start AFK system
+        try:
+            from Elevenyts.plugins.features.afk import start_afk
+            start_afk(app)
+            logger.info("🌙 AFK system started successfully.")
+        except Exception as e:
+            logger.warning(f"Failed to start AFK system: {e}")
+
         # Step 8: Load sudo users and blacklisted users from database
         sudoers = await db.get_sudoers()
         app.sudoers.update(sudoers)  # Add sudo users to set
