@@ -15,7 +15,7 @@
 # ==========================================================
 build:
   docker:
-    worker: Dockerfile
+    web: Dockerfile
 
 run:
-  worker: python -m Elevenyts
+  web: python -m Elevenyts
